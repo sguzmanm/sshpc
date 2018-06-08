@@ -20,7 +20,7 @@ void SetMatrixRandom(my_prec **A,unsigned int rows, unsigned int cols){
  **/
 double** getOptimalCoefficients (double** x, double** y, int samples,int numVar)
 {
-			printf("0\n");
+			printf("AA\n");
 
 	double** trans=Transpose(x,samples,numVar);
 	int i,j;

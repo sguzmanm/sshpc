@@ -18,7 +18,7 @@ int main(int argc, char** argv){
 
 	// Setting the problem size!
 	samples = 2048; size_X = 128; size_data = 1024;
-
+	printf("a\n");
 	// Creating the Matrix
 	dataMatrix = CREATE_MATRIX(size_data,size_X);
 /*
@@ -72,8 +72,11 @@ int main(int argc, char** argv){
 	// Print duration
 	SimpleTimer_print( &t2 );
 
+		printf("b\n");
 	double**y=CREATE_MATRIX(samples,1);
 	SetMatrixRandom(y,samples,1);
+		printf("c\n");
+
 	double** a=getOptimalCoefficients(dataMatrix,y,samples,size_X);
 	for(int i=0;i<size_X;i++)
 		printf("%f ",a[i][0]);
