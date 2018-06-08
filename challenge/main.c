@@ -74,7 +74,9 @@ int main(int argc, char** argv){
 
 	double**y=CREATE_MATRIX(samples,1);
 	SetMatrixRandom(y,samples,1);
-	getOptimalCoefficients(dataMatrix,y,samples,size_X);
+	double* a=getOptimalCoefficients(dataMatrix,y,samples,size_X);
+	for(int i=0;i<size_X;i++)
+		printf("%f ",a[i]);
 	//
 	// Check out the Times!
 	//
@@ -83,6 +85,7 @@ int main(int argc, char** argv){
 	// from arrays.c
 	free(dataMatrix[0]);
 	free(dataMatrix), dataMatrix = NULL;
+	free(y);
 
 	// End
 	return 0;

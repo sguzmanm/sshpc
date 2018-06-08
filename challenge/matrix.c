@@ -22,25 +22,9 @@ double** getOptimalCoefficients (double** x, double** y, int samples,int numVar)
 {
 	double** trans=Transpose(x,samples,numVar);
 	int i,j;
-	for(i=0;i<samples;i++)
-	{
-		for(j=0;j<numVar;j++)
-		{
-			printf("%f",trans[i][j]);
-		}
-		printf("\n");
-	}
 	double** mult=multiply0(x,trans,samples,numVar);
 	double** inv=CREATE_MATRIX(samples,numVar);
 	inverse(mult,inv,samples,numVar);
-	for(int i=0;i<samples;i++)
-	{
-		for(int j=0;j<numVar;j++)
-		{
-			printf("%f",inv[i][j]);
-		}
-		printf("\n");
-	}
 	return multiply0(multiply0(inv,trans,samples,numVar),y,numVar,samples);
 }
 /**
