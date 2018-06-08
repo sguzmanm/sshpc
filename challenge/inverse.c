@@ -7,7 +7,7 @@
 void getCofactor(double** A, double** temp, int p, int q, int n, int m)
 {
     int i = 0, j = 0;
-    int row =0, col=0;
+    int row, col;
     // Looping for each element of the matrix
     for (row = 0; row < n; row++)
     {
@@ -50,12 +50,13 @@ int determinant(double** A, int n,int m)
     {
         // Getting Cofactor of A[0][f]
         getCofactor(A, temp, 0, f, n, m);
-        D += sign * A[0][f] * determinant(temp, n - 1,m);
+        D += sign * A[0][f] * determinant(temp, n - 1,m-1);
  
         // terms are to be added with alternate sign
         sign = -sign;
     }
- 
+    free(temp[0]);
+    free(temp),temp=NULL;
     return D;
 }
  
@@ -85,7 +86,7 @@ void adjoint(double** A,double** adj,int n, int m)
  
             // Interchanging rows and columns to get the
             // transpose of the cofactor matrix
-            adj[j][i] = (sign)*(determinant(temp, n-1,m));
+            adj[j][i] = (sign)*(determinant(temp, n-1,m-1));
         }
     }
 }

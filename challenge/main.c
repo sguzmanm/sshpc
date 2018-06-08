@@ -89,7 +89,7 @@ int main(int argc, char** argv){
 	free(dataMatrix[0]);
 	free(dataMatrix), dataMatrix = NULL;
 	free(y[0]);
-	free(y);
+	free(y), y=NULL;
 
 	// End
 	return 0;
