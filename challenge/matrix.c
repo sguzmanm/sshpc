@@ -62,6 +62,36 @@ double variance(double** a,double* y,double** x,int N,int n)
 	temp=(double)N;
 	return sum/(2*temp);
 }
+
+
+// Matrix Transpose Code
+double** Transpose(double** A,int r,int c) {
+
+  double** transpose=CREATE_MATRIX(r,c);
+  for (int j = 0; j < r; j++) {
+    for (int i = 0; i < c; i++) {
+      transpose[j][i]=A[i][j];
+    }
+  }
+  return transpose;
+
+}
+// Matrix Multiply Code
+double** multiply0(double** a, double** b,int row,int col)
+{
+	double** c=CREATE_MATRIX(row,col);
+    int i,j,k;
+    #pragma omp parallel for
+    for(i=0; i<row; i++) {
+        for(j=0; j<col; j++) {
+    	    for(k=0; k<row; k++) {
+				c[i][j] = c[i][j] + a[i][k] * b[k][j];
+			}
+		}
+	} 
+	return c;
+}
+
 // Perform Linear Regression
 
 
