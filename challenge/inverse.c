@@ -1,5 +1,6 @@
 #include "inverse.h"
 #include "arrays.h"
+
 // Function to get cofactor of A[p][q] in temp[][]. n is current
 // dimension of A[][]
 void getCofactor(double** A, double** temp, int p, int q, int n)
@@ -92,7 +93,7 @@ void adjoint(double** A,double** adj,int n, int m)
 void inverse(double** A, double** inverse,int n,int m)
 {
     // Find determinant of A[][]
-    int det = determinant(A, n,m);
+    double det = (double)determinant(A, n,m);
     if (det == 0)
     {
         return;
@@ -100,10 +101,10 @@ void inverse(double** A, double** inverse,int n,int m)
  
     // Find adjoint
     double** adj;
-    adjoint(A, adj,N);
+    adjoint(A, adj,n,m);
  
     // Find Inverse using formula "inverse(A) = adj(A)/det(A)"
     for (int i=0; i<n; i++)
         for (int j=0; j<m; j++)
-            inverse[i][j] = adj[i][j]/float(det);
+            inverse[i][j] = adj[i][j]/det;
  }
