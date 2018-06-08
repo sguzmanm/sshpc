@@ -89,6 +89,8 @@ void adjoint(double** A,double** adj,int n, int m)
             adj[j][i] = (sign)*(determinant(temp, n-1,m-1));
         }
     }
+    free(temp[0]);
+    free(temp),temp=NULL;
 }
  
 // Function to calculate and store inverse, returns false if
@@ -96,6 +98,7 @@ void adjoint(double** A,double** adj,int n, int m)
 void inverse(double** A, double** inverse,int n,int m)
 {
     // Find determinant of A[][]
+    printf("DETER");
     double det = (double)determinant(A, n,m);
     if (det == 0)
     {
@@ -104,6 +107,7 @@ void inverse(double** A, double** inverse,int n,int m)
  
     // Find adjoint
     double** adj;
+    printf("ADJ");
     adjoint(A, adj,n,m);
  
     // Find Inverse using formula "inverse(A) = adj(A)/det(A)"
