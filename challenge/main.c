@@ -72,12 +72,12 @@ int main(int argc, char** argv){
 	// Print duration
 	SimpleTimer_print( &t2 );
 
-	double**y=CREATE_MATRIX(samples,1);
+	/*double**y=CREATE_MATRIX(samples,1);
 	SetMatrixRandom(y,samples,1);
 	getOptimalCoefficients(dataMatrix,y,samples,size_X);
 	//
 	// Check out the Times!
-	//
+	//*/
 
 	// Finally, we clean the memory stack as suggested
 	// from arrays.c
