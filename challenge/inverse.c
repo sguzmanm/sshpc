@@ -39,7 +39,7 @@ int determinant(double** A, int n,int m)
     int D = 0; // Initialize result
  
     //  Base case : if matrix contains single element
-    if (n == 1 && m==1)
+    if (n == 0 || m==0)
         return A[0][0];
  
     double** temp=CREATE_MATRIX(n,m); // To store cofactors
