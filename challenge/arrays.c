@@ -8,7 +8,6 @@ my_prec *CREATE_ARRAY(const unsigned int a){
 	// is the default initialized value for a pointer.
 	if (!v) return NULL;
 	// Print some help to free memory adequately
-	printf("\n\nARRAYS:: To free memory please use free(ArrayVar)\n\n\n");
 	return v;
 };
 

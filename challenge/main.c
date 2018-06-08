@@ -73,7 +73,16 @@ int main(int argc, char** argv){
 	SimpleTimer_print( &t2 );
 
 		printf("b\n");
+
+	printf("DATA MATRIX \n");
+	for(int i=0;i<size_data;i++)
+		for (int j=0;j<size_X;j++)
+			printf("%f ",dataMatrix[i][j]);
 	double**y=CREATE_MATRIX(size_data,1);
+	printf("y \n");
+	for(int i=0;i<size_data;i++)
+		for (int j=0;j<1;j++)
+			printf("%f ",y[i][j]);
 	SetMatrixRandom(y,size_data,1);
 		printf("c\n");
 
