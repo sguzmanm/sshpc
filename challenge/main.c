@@ -86,6 +86,7 @@ int main(int argc, char** argv){
 		for (int j=0;j<1;j++)
 			printf("%f ",y[i][j]);
 
+	printf("\n A \n");
 	double** a=getOptimalCoefficients(dataMatrix,y,size_data,size_X);
 	for(int i=0;i<size_X;i++)
 		printf("%f ",a[i][0]);
