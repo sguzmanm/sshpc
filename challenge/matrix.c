@@ -72,6 +72,7 @@ double** Transpose(double** A,int r,int c) {
 // Matrix Multiply Code
 double** multiply0(double** a, double** b,int row,int col)
 {
+	printf("MULT %d %d \n",row,col);
 	double** c=CREATE_MATRIX(row,col);
     int i,j,k;
     #pragma omp parallel for
