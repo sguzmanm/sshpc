@@ -1,5 +1,4 @@
 #include "inverse.h"
-#include <cstdlib>
 // Function to get cofactor of A[p][q] in temp[][]. n is current
 // dimension of A[][]
 void getCofactor(double** A, double** temp, int p, int q, int n)
