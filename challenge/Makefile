@@ -6,14 +6,14 @@ FLAGS = -g -O3 -Wall
 LIBS = -lm
 
 OUTFILE = exe
-MAINFILE = matrix.c
-OBJS = arrays.o timer.o randn.o
-SRCS = arrays.c timer.c randn.c
+MAINFILE = matrix.cpp
+OBJS = arrays.o timer.o randn.o inverse.o multiply.o Tranpose.o
+SRCS = arrays.c timer.c randn.c inverse.c multiply.c Tranpose.c
 
 $(OUTFILE): $(OBJS)
-	$(CC) $(CFLAGS) $(MAINFILE) -o $(OUTFILE) $(OBJS) $(LIBS)
+	$(CXX) $(CFLAGS) $(MAINFILE) -o $(OUTFILE) $(OBJS) $(LIBS)
 $(OBJS): $(SRCS) defs.h
-	$(CC) $(CFLAGS) -c $(SRCS) $(LIBS)
+	$(CXX) $(CFLAGS) -c $(SRCS) $(LIBS)
 
 clean:
 	rm -rf *.o $(OUTFILE) $(OUTFILE).dSYM
