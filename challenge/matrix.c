@@ -60,9 +60,9 @@ double variance(double** a,double* y,double** x,int N,int n)
 // Matrix Transpose Code
 double** Transpose(double** A,int r,int c) {
 
-  double** transpose=CREATE_MATRIX(r,c);
-  for (int j = 0; j < r; j++) {
-    for (int i = 0; i < c; i++) {
+  double** transpose=CREATE_MATRIX(c,r);
+  for (int j = 0; j < c; j++) {
+    for (int i = 0; i < r; i++) {
       transpose[j][i]=A[i][j];
     }
   }
