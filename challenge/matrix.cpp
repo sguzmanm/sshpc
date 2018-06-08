@@ -154,7 +154,7 @@ int main(int argc, char** argv){
 
 	double*y=CREATE_ARRAY(samples);
 	SetArrayRandom(y,samples);
-	getOptimalCoefficients(x,y);
+	getOptimalCoefficients(x,y,samples,size_X);
 	//
 	// Check out the Times!
 	//
