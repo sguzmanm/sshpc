@@ -1,18 +1,6 @@
 #include "inverse.h"
 #include <cstdlib>
 
-void Transpose(FTYPE* const A, const int n, const int m) {
-
-  for (int j = 0; j < n; j++) {
-    for (int i = 0; i < j; i++) {
-      const FTYPE c = A[i*n + j];
-      A[i*n + j] = A[j*n + i];
-      A[j*n + i] = c;
-    }
-  }
-
-}
-
 // C++ program to find adjoint and inverse of a matrix
 #include<bits/stdc++.h>
 using namespace std;
@@ -20,7 +8,7 @@ using namespace std;
  
 // Function to get cofactor of A[p][q] in temp[][]. n is current
 // dimension of A[][]
-void getCofactor(int A[N][N], int temp[N][N], int p, int q, int n)
+void getCofactor(int A[][]], int temp[][], int p, int q, int n)
 {
     int i = 0, j = 0;
  
@@ -49,7 +37,7 @@ void getCofactor(int A[N][N], int temp[N][N], int p, int q, int n)
  
 /* Recursive function for finding determinant of matrix.
    n is current dimension of A[][]. */
-int determinant(int A[N][N], int n)
+int determinant(int A[][], int n)
 {
     int D = 0; // Initialize result
  
@@ -76,7 +64,7 @@ int determinant(int A[N][N], int n)
 }
  
 // Function to get adjoint of A[N][N] in adj[N][N].
-void adjoint(int A[N][N],int adj[N][N])
+void adjoint(int A[][],int adj[][])
 {
     if (N == 1)
     {
@@ -107,7 +95,7 @@ void adjoint(int A[N][N],int adj[N][N])
  
 // Function to calculate and store inverse, returns false if
 // matrix is singular
-void inverse(int A[N][N], float inverse[N][N])
+void inverse(int A[][], float inverse[][])
 {
     // Find determinant of A[][]
     int det = determinant(A, N);
@@ -126,17 +114,3 @@ void inverse(int A[N][N], float inverse[N][N])
         for (int j=0; j<N; j++)
             inverse[i][j] = adj[i][j]/float(det);
  }
-
-// Generic function to display the matrix.  We use it to display
-// both adjoin and inverse. adjoin is integer matrix and inverse
-// is a float.
-template<class T>
-void display(T A[N][N])
-{
-    for (int i=0; i<N; i++)
-    {
-        for (int j=0; j<N; j++)
-            cout << A[i][j] << " ";
-        cout << endl;
-    }
-}
