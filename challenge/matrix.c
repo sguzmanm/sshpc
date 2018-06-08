@@ -29,10 +29,10 @@ void SetArrayRandom(my_prec *A,unsigned int rows){
 /**
  * Gets the a_opt or the coefficients of each x
  **/
-double** getOptimalCoefficientes (double** x, double* y)
+double[][] getOptimalCoefficients (double[][] x, double[] y)
 {
-	double** trans=Transpose(x);
-	for(int i=0;i<trans;i++)
+	double[][] trans=Transpose(x);
+	for(int i=0;i<trans.length;i++)
 	{
 		for(int j=0;j<trans[0].length;j++)
 		{
@@ -40,8 +40,9 @@ double** getOptimalCoefficientes (double** x, double* y)
 		}
 		printf("\n");
 	}
-	double** inv=inverse(multiply0(x,trans));
-	for(int i=0;i<inv;i++)
+	double[][] inv=multiply0(x,trans);
+	inverse(inv);
+	for(int i=0;i<inv.length;i++)
 	{
 		for(int j=0;j<inv[0].length;j++)
 		{
