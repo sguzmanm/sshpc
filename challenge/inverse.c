@@ -94,12 +94,11 @@ void inverse(double** A, double** inverse,int N)
     int det = determinant(A, N);
     if (det == 0)
     {
-        cout << "Singular matrix, can't find its inverse";
-        return false;
+        return;
     }
  
     // Find adjoint
-    int adj[N][N];
+    double adj[N][N];
     adjoint(A, adj,N);
  
     // Find Inverse using formula "inverse(A) = adj(A)/det(A)"
