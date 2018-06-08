@@ -1,6 +1,6 @@
 
 
-void getCofactor(double** A, double** temp, int p, int q, int n);
+void getCofactor(double** A, double** temp, int p, int q, int n, int m);
  
 /* Recursive function for finding determinant of matrix.
    n is current dimension of A[][]. */

@@ -3,14 +3,14 @@
 
 // Function to get cofactor of A[p][q] in temp[][]. n is current
 // dimension of A[][]
-void getCofactor(double** A, double** temp, int p, int q, int n)
+void getCofactor(double** A, double** temp, int p, int q, int n, int m)
 {
     int i = 0, j = 0;
     int row =0, col=0;
     // Looping for each element of the matrix
     for (row = 0; row < n; row++)
     {
-        for (col = 0; col < n; col++)
+        for (col = 0; col < m; col++)
         {
             //  Copying into temporary matrix only those element
             //  which are not in given row and column
@@ -68,14 +68,15 @@ void adjoint(double** A,double** adj,int n, int m)
     }
  
     // temp is used to store cofactors of A[][]
-    int sign = 1, temp[N][N];
+    int sign = 1;
+    double** temp=CREATE_ARRAY(n,m);
  
     for (int i=0; i<n; i++)
     {
         for (int j=0; j<m; j++)
         {
             // Get cofactor of A[i][j]
-            getCofactor(A, temp, i, j, n);
+            getCofactor(A, temp, i, j, n.m);
  
             // sign of adj[j][i] positive if sum of row
             // and column indexes is even.
