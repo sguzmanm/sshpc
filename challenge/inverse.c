@@ -79,6 +79,7 @@ void adjoint(double** A,double** adj,int n, int m)
     {
         for (int j=0; j<m; j++)
         {
+            printf("%d %d \n",i,j);
             // Get cofactor of A[i][j]
             getCofactor(A, temp, i, j, n, m);
  
@@ -109,7 +110,7 @@ void inverse(double** A, double** inverse,int n,int m)
  
     // Find adjoint
     double** adj;
-    printf("ADJ");
+    printf("ADJ\n %d %d",n,m);
     adjoint(A, adj,n,m);
  
     // Find Inverse using formula "inverse(A) = adj(A)/det(A)"

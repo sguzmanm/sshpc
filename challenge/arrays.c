@@ -38,8 +38,6 @@ my_prec **CREATE_MATRIX(const unsigned int a,const unsigned int b){
 	for( int j = 1; j < a; j++ )
 		v[j] = v[j-1] + b;
 	// Print some help to free memory adequately
-	printf("\n\nARRAYS:: To avoid memory leaks, free memory via a 2-step proc:\n");
-	printf("\tfree(ArrayVar[0]);\n\tfree(ArrayVar), dataMatrix = NULL;\n\n\n");
 	return v;
 };
 
