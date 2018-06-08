@@ -40,7 +40,7 @@ int determinant(double** A, int n,int m)
     if (n == 1)
         return A[0][0];
  
-    double temp[n][m]; // To store cofactors
+    double** temp=CREATE_MATRIX(n,m); // To store cofactors
  
     int sign = 1;  // To store sign multiplier
  
@@ -48,7 +48,7 @@ int determinant(double** A, int n,int m)
     for (int f = 0; f < n; f++)
     {
         // Getting Cofactor of A[0][f]
-        getCofactor(A, temp, 0, f, m);
+        getCofactor(A, temp, 0, f, n, m);
         D += sign * A[0][f] * determinant(temp, n - 1,m);
  
         // terms are to be added with alternate sign
