@@ -20,14 +20,16 @@ void SetMatrixRandom(my_prec **A,unsigned int rows, unsigned int cols){
  **/
 double** getOptimalCoefficients (double** x, double** y, int samples,int numVar)
 {
+			printf("0\n");
+
 	double** trans=Transpose(x,samples,numVar);
 	int i,j;
 	double** mult=multiply0(x,trans,samples,numVar);
-		printf("A");
+		printf("A\n");
 	double** inv=CREATE_MATRIX(samples,numVar);
-		printf("B");
+		printf("B\n");
 	inverse(mult,inv,samples,numVar);
-	printf("LLEGa");
+	printf("LLEGa\n");
 	return multiply0(multiply0(inv,trans,samples,numVar),y,numVar,samples);
 }
 /**
