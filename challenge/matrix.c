@@ -29,7 +29,7 @@ void SetArrayRandom(my_prec *A,unsigned int rows){
 /**
  * Gets the a_opt or the coefficients of each x using y
  **/
-double** getOptimalCoefficients (double** x, double* y, int samples,int numVar)
+double** getOptimalCoefficients (double** x, double** y, int samples,int numVar)
 {
 	double** trans=Transpose(x,samples,numVar);
 	int i,j;
@@ -151,8 +151,8 @@ int main(int argc, char** argv){
 	// Print duration
 	SimpleTimer_print( &t2 );
 
-	double*y=CREATE_ARRAY(samples);
-	SetArrayRandom(y,samples);
+	double***y=CREATE_MATRIX(samples,1);
+	SetMatrixRandom(y,samples,1);
 	getOptimalCoefficients(dataMatrix,y,samples,size_X);
 	//
 	// Check out the Times!
