@@ -35,6 +35,7 @@ void getCofactor(double** A, double** temp, int p, int q, int n, int m)
    n is current dimension of A[][]. */
 int determinant(double** A, int n,int m)
 {
+    printf("NUM %d %d",n,m);
     int D = 0; // Initialize result
  
     //  Base case : if matrix contains single element
