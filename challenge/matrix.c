@@ -20,10 +20,14 @@ void SetMatrixRandom(my_prec **A,unsigned int rows, unsigned int cols){
  **/
 double** getOptimalCoefficients (double** x, double** y, int samples,int numVar)
 {
-			printf("AA\n");
+			printf("AA %d %d\n",samples,numVar);
 
 	double** trans=Transpose(x,samples,numVar);
+				printf("BB %d %d\n",samples,numVar);
+
 	int i,j;
+				printf("CC %d %d\n",samples,numVar);
+
 	double** mult=multiply0(x,trans,samples,numVar);
 		printf("A\n");
 	double** inv=CREATE_MATRIX(samples,numVar);
@@ -70,7 +74,7 @@ double** multiply0(double** a, double** b,int row,int col)
 {
 	double** c=CREATE_MATRIX(row,col);
     int i,j,k;
-	printf("Row %d Col %d",row,col);
+	printf("Row %d Col %d \n",row,col);
     #pragma omp parallel for
     for(i=0; i<row; i++) {
         for(j=0; j<col; j++) {
