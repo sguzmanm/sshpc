@@ -27,7 +27,7 @@ void SetArrayRandom(my_prec *A,unsigned int rows){
 		A[j] = normal_rand();
 }
 /**
- * Gets the a_opt or the coefficients of each x
+ * Gets the a_opt or the coefficients of each x using y
  **/
 double[][] getOptimalCoefficients (double[][] x, double[] y)
 {
@@ -55,7 +55,7 @@ double[][] getOptimalCoefficients (double[][] x, double[] y)
 /**
  * Gets the variance with the given list of coefficientes (a)
  **/
-double variance(double** a,double* y,double** x)
+double variance(double[][] a,double[] y,double[][] x)
 {
 	double N=a.length;
 	int n=x[0].length;

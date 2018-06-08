@@ -1,10 +1,9 @@
 #include "Transpose.h"
 #include <cstdlib>
 
-double[][] Transpose(double[][] A) {
+double[][] Transpose(double[r][] A,int r) {
 
-  int r=A.length;
-  int c=a[0].length;
+  int c=A[0].length;
   double[][] transpose=new double[c][r];
   for (int j = 0; j < r; j++) {
     for (int i = 0; i < c; i++) {
