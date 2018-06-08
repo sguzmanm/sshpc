@@ -8,7 +8,7 @@ using namespace std;
  
 // Function to get cofactor of A[p][q] in temp[][]. n is current
 // dimension of A[][]
-void getCofactor(int A[][], int temp[][], int p, int q, int n)
+void getCofactor(double** A, double** temp, int p, int q, int n)
 {
     int i = 0, j = 0;
  
@@ -37,7 +37,7 @@ void getCofactor(int A[][], int temp[][], int p, int q, int n)
  
 /* Recursive function for finding determinant of matrix.
    n is current dimension of A[][]. */
-int determinant(int A[][], int n)
+int determinant(double** A, int n)
 {
     int D = 0; // Initialize result
  
@@ -64,7 +64,7 @@ int determinant(int A[][], int n)
 }
  
 // Function to get adjoint of A[N][N] in adj[N][N].
-void adjoint(int A[][],int adj[][])
+void adjoint(double** A,double** adj,int N)
 {
     if (N == 1)
     {
@@ -95,7 +95,7 @@ void adjoint(int A[][],int adj[][])
  
 // Function to calculate and store inverse, returns false if
 // matrix is singular
-void inverse(int A[][], float inverse[][])
+void inverse(double*** A, double** inverse,int N)
 {
     // Find determinant of A[][]
     int det = determinant(A, N);
@@ -107,7 +107,7 @@ void inverse(int A[][], float inverse[][])
  
     // Find adjoint
     int adj[N][N];
-    adjoint(A, adj);
+    adjoint(A, adj,N);
  
     // Find Inverse using formula "inverse(A) = adj(A)/det(A)"
     for (int i=0; i<N; i++)
