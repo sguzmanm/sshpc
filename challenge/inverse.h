@@ -8,7 +8,7 @@ int determinant(double** A, int n,int m);
  
 // Function to get adjoint of A[N][N] in adj[N][N].
 void adjoint(double** A,double** adj,int n, int m);
-}
+
  
 // Function to calculate and store inverse, returns false if
 // matrix is singular
