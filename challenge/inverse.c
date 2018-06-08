@@ -4,11 +4,11 @@
 void getCofactor(double** A, double** temp, int p, int q, int n)
 {
     int i = 0, j = 0;
- 
+    int row =0, col=0;
     // Looping for each element of the matrix
-    for (int row = 0; row < n; row++)
+    for (row = 0; row < n; row++)
     {
-        for (int col = 0; col < n; col++)
+        for (col = 0; col < n; col++)
         {
             //  Copying into temporary matrix only those element
             //  which are not in given row and column
@@ -30,7 +30,7 @@ void getCofactor(double** A, double** temp, int p, int q, int n)
  
 /* Recursive function for finding determinant of matrix.
    n is current dimension of A[][]. */
-int determinant(double** A, int n)
+int determinant(double** A, int n,int m)
 {
     int D = 0; // Initialize result
  
@@ -38,7 +38,7 @@ int determinant(double** A, int n)
     if (n == 1)
         return A[0][0];
  
-    double temp[N][N]; // To store cofactors
+    double temp[n][m]; // To store cofactors
  
     int sign = 1;  // To store sign multiplier
  
@@ -46,7 +46,7 @@ int determinant(double** A, int n)
     for (int f = 0; f < n; f++)
     {
         // Getting Cofactor of A[0][f]
-        getCofactor(A, temp, 0, f, n);
+        getCofactor(A, temp, 0, f, m);
         D += sign * A[0][f] * determinant(temp, n - 1);
  
         // terms are to be added with alternate sign
@@ -91,7 +91,7 @@ void adjoint(double** A,double** adj,int N)
 void inverse(double** A, double** inverse,int n,int m)
 {
     // Find determinant of A[][]
-    int det = determinant(A, N);
+    int det = determinant(A, n,m);
     if (det == 0)
     {
         return;
