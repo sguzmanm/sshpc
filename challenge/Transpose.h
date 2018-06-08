@@ -9,6 +9,6 @@
 #define FTYPE double
 #endif
 
-void Transpose(FTYPE* const A, const int n);
+double** Transpose(double** A);
 
 #endif

@@ -1,4 +1,4 @@
-*/
+
 
 #ifdef __MIC__
 #define MAXTHREADS 240
@@ -17,4 +17,4 @@ typedef TYPE array[NUM];
 // kernel being used can be reported when the test is run.
 #define MULTIPLY multiply0
 
-extern void multiply0(int msize, int tidx, int numt, TYPE a[][NUM], TYPE b[][NUM], TYPE c[][NUM], TYPE t[][NUM]);
+extern double** multiply0(double** a, double** b);

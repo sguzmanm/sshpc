@@ -2,6 +2,9 @@
 #include "arrays.h"
 #include "timer.h"
 #include "randn.h"
+#include "inverse.h"
+#include "multiply.h"
+#include "Transpose.h"
 
 
 void SetMatrixZero(my_prec **A,unsigned int rows, unsigned int cols){
@@ -18,11 +21,56 @@ void SetMatrixRandom(my_prec **A,unsigned int rows, unsigned int cols){
 			A[j][k] = normal_rand();
 }
 
-// Matrix Transpose Code
-// Matrix Multiply Code
-// Matrix Inversion Code
-
-
+void SetArrayRandom(my_prec *A,unsigned int rows){
+	int j,k;
+	for( j = 0; j < rows; j++ )
+		A[j] = normal_rand();
+}
+/**
+ * Gets the a_opt or the coefficients of each x
+ **/
+double** getOptimalCoefficientes (double** x, double* y)
+{
+	double** trans=Transpose(x);
+	for(int i=0;i<trans;i++)
+	{
+		for(int j=0;j<trans[0].length;j++)
+		{
+			printf("%d",trans[i][j]);
+		}
+		printf("\n");
+	}
+	double** inv=inverse(multiply0(x,trans));
+	for(int i=0;i<inv;i++)
+	{
+		for(int j=0;j<inv[0].length;j++)
+		{
+			printf("%d",inv[i][j]);
+		}
+		printf("\n");
+	}
+	return multiply(multiply0(inv,trans),y);
+}
+/**
+ * Gets the variance with the given list of coefficientes (a)
+ **/
+double variance(double** a,double* y,double** x)
+{
+	double N=a.length;
+	int n=x[0].length;
+	double sum=0;
+	double temp=0;
+	for(int i=0;i<N;i++)
+	{
+		temp=0;
+		for(int j=0;j<n;j++)
+		{
+			temp+=x[i][j]*a[i][0];
+		}
+		sum+=(y[i]-temp)*(y[i]-temp);
+	}
+	return sum/(2*N);
+}
 // Perform Linear Regression
 
 
@@ -50,7 +98,7 @@ int main(int argc, char** argv){
 
 	// Creating the Matrix
 	dataMatrix = CREATE_MATRIX(size_data,size_X);
-
+/*
 	// Collect start time for this snippet
 	SimpleTimer_start( &t1 );
 	// Set all values of the matrix to 1
@@ -65,6 +113,7 @@ int main(int argc, char** argv){
 
 	// BEGIN: DEBUG SNIPPET
 	// Why this snippet of code?
+	// ANS: To make a quick revision of the timer
 	// Collect start time for this snippet
 	SimpleTimer_start( &t1 );
 	// Set all values of the matrix to 1
@@ -77,7 +126,7 @@ int main(int argc, char** argv){
 	SimpleTimer_print( &t1 );
 	// END: DEBUG SNIPPET
 	// Why does it take shorter time to run this loop?
-
+	//ANS: It is already on memory
 	//
 	// Reset the matrix elements to zero
 	//
@@ -88,7 +137,7 @@ int main(int argc, char** argv){
 	SimpleTimer_stop( &t2 );
 	// Print duration
 	SimpleTimer_print( &t2 );
-
+*/
 	//
 	// Place random elements!
 	//
@@ -99,6 +148,10 @@ int main(int argc, char** argv){
 	SimpleTimer_stop( &t2 );
 	// Print duration
 	SimpleTimer_print( &t2 );
+
+	double*y=CREATE_ARRAY(samples);
+	SetArrayRandom(y,samples);
+	getOptimalCoefficientes(x,y);
 	//
 	// Check out the Times!
 	//

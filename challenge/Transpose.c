@@ -1,14 +1,16 @@
 #include "Transpose.h"
 #include <cstdlib>
 
-void Transpose(FTYPE* const A, const int n) {
+double** Transpose(double** A) {
 
-  for (int j = 0; j < n; j++) {
-    for (int i = 0; i < j; i++) {
-      const FTYPE c = A[i*n + j];
-      A[i*n + j] = A[j*n + i];
-      A[j*n + i] = c;
+  int r=A.length;
+  int c=a[0].length;
+  double** transpose=new double[c][r];
+  for (int j = 0; j < r; j++) {
+    for (int i = 0; i < c; i++) {
+      transpose[j][i]=A[i][j];
     }
   }
+  return transpose;
 
 }
