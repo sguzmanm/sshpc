@@ -6,7 +6,7 @@
 // dimension of A[][]
 void getCofactor(double** A, double** temp, int p, int q, int n, int m)
 {
-    printf("COFACTOR %d %d\n",p,q,n,m);
+    printf("COFACTOR %d %d %d %d\n",p,q,n,m);
     int i = 0, j = 0;
     int row, col;
     // Looping for each element of the matrix
