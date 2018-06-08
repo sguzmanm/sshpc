@@ -57,10 +57,8 @@ double** getOptimalCoefficients (double** x, double* y, int samples,int numVar)
 /**
  * Gets the variance with the given list of coefficientes (a)
  **/
-double variance(double[][] a,double[] y,double[][] x)
+double variance(double** a,double* y,double** x,int N,int n)
 {
-	double N=a.length;
-	int n=x[0].length;
 	double sum=0;
 	double temp=0;
 	for(int i=0;i<N;i++)
@@ -72,7 +70,8 @@ double variance(double[][] a,double[] y,double[][] x)
 		}
 		sum+=(y[i]-temp)*(y[i]-temp);
 	}
-	return sum/(2*N);
+	temp=(double)N;
+	return sum/(2*temp);
 }
 // Perform Linear Regression
 
