@@ -17,4 +17,4 @@ typedef TYPE array[NUM];
 // kernel being used can be reported when the test is run.
 #define MULTIPLY multiply0
 
-extern double** multiply0(double** a, double** b);
+extern double** multiply0(double** a, double** b,int row,int col);
