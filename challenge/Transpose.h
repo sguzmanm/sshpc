@@ -9,6 +9,6 @@
 #define FTYPE double
 #endif
 
-double** Transpose(double** A);
+double** Transpose(double** A,int r,int c);
 
 #endif
