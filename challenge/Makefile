@@ -14,8 +14,8 @@ LIBS = -lm
 
 OUTFILE = exe
 MAINFILE = main.c
-OBJS = matrix.o arrays.o timer.o randn.o
-SRCS = matrix.c arrays.c timer.c randn.c
+OBJS = matrix.o arrays.o timer.o randn.o Transpose.o multiply.o inverse.o
+SRCS = matrix.c arrays.c timer.c randn.c Transpose.c multiply.c inverse.c
 
 all: $(OUTFILE) python clean
 $(OUTFILE): $(OBJS)
