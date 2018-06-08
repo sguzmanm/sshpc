@@ -79,12 +79,12 @@ int main(int argc, char** argv){
 		for (int j=0;j<size_X;j++)
 			printf("%f ",dataMatrix[i][j]);
 	double**y=CREATE_MATRIX(size_data,1);
+	
+	SetMatrixRandom(y,size_data,1);
 	printf("y \n");
 	for(int i=0;i<size_data;i++)
 		for (int j=0;j<1;j++)
 			printf("%f ",y[i][j]);
-	SetMatrixRandom(y,size_data,1);
-		printf("c\n");
 
 	double** a=getOptimalCoefficients(dataMatrix,y,size_data,size_X);
 	for(int i=0;i<size_X;i++)
