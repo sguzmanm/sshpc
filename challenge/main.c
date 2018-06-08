@@ -77,7 +77,7 @@ int main(int argc, char** argv){
 	SetMatrixRandom(y,samples,1);
 		printf("c\n");
 
-	double** a=getOptimalCoefficients(dataMatrix,y,samples,size_X);
+	double** a=getOptimalCoefficients(dataMatrix,y,size_data,size_X);
 	for(int i=0;i<size_X;i++)
 		printf("%f ",a[i][0]);
 	//
