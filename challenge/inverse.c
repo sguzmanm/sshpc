@@ -88,7 +88,7 @@ void adjoint(double** A,double** adj,int N)
  
 // Function to calculate and store inverse, returns false if
 // matrix is singular
-void inverse(double** A, double** inverse,int N)
+void inverse(double** A, double** inverse,int n,int m)
 {
     // Find determinant of A[][]
     int det = determinant(A, N);
@@ -102,7 +102,7 @@ void inverse(double** A, double** inverse,int N)
     adjoint(A, adj,N);
  
     // Find Inverse using formula "inverse(A) = adj(A)/det(A)"
-    for (int i=0; i<N; i++)
-        for (int j=0; j<N; j++)
+    for (int i=0; i<n; i++)
+        for (int j=0; j<m; j++)
             inverse[i][j] = adj[i][j]/float(det);
  }
