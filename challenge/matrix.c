@@ -1,10 +1,4 @@
-#include "defs.h"
-#include "arrays.h"
-#include "timer.h"
-#include "randn.h"
-#include "inverse.h"
-#include "multiply.h"
-#include "Transpose.h"
+#include "matrix.h"
 
 #define seed 7
 
