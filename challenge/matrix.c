@@ -152,7 +152,7 @@ int main(int argc, char** argv){
 
 	double*y=CREATE_ARRAY(samples);
 	SetArrayRandom(y,samples);
-	getOptimalCoefficientes(x,y);
+	getOptimalCoefficients(x,y);
 	//
 	// Check out the Times!
 	//
