@@ -6,6 +6,7 @@
 #include "multiply.h"
 #include "Transpose.h"
 
+#define seed 7
 
 void SetMatrixZero(my_prec **A,unsigned int rows, unsigned int cols){
 	int j,k;
@@ -113,4 +114,5 @@ my_prec **treatMatrix(unsigned int samples, unsigned int size_X, unsigned int si
 /*
 
 	End of Python Friendly functions
+*/
 
