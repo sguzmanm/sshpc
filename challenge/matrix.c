@@ -21,12 +21,6 @@ void SetMatrixRandom(my_prec **A,unsigned int rows, unsigned int cols){
 		for( k = 0; k < cols; k++ )
 			A[j][k] = normal_rand();
 }
-
-void SetArrayRandom(my_prec *A,unsigned int rows){
-	int j,k;
-	for( j = 0; j < rows; j++ )
-		A[j] = normal_rand();
-}
 /**
  * Gets the a_opt or the coefficients of each x using y
  **/
