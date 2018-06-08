@@ -31,7 +31,7 @@ void SetArrayRandom(my_prec *A,unsigned int rows){
  **/
 double** getOptimalCoefficients (double** x, double* y, int samples,int numVar)
 {
-	double[][] trans=Transpose(x);
+	double** trans=Transpose(x,samples,numVar);
 	int i,j;
 	for(i=0;i<samples;i++)
 	{
@@ -41,18 +41,18 @@ double** getOptimalCoefficients (double** x, double* y, int samples,int numVar)
 		}
 		printf("\n");
 	}
-	double[][] mult=multiply0(x,trans);
-	double[][] inv=CREATE_MATRIX(mult.length,mult.length);
+	double** mult=multiply0(x,trans,samples,numVar);
+	double** inv=CREATE_MATRIX(samples,numVar);
 	inverse(mult,inv);
-	for(int i=0;i<inv.length;i++)
+	for(int i=0;i<samples;i++)
 	{
-		for(int j=0;j<inv[0].length;j++)
+		for(int j=0;j<numVar;j++)
 		{
 			printf("%d",inv[i][j]);
 		}
 		printf("\n");
 	}
-	return multiply0(multiply0(inv,trans),y);
+	return multiply0(multiply0(inv,trans,samples,numVar),y,numVar,samples);
 }
 /**
  * Gets the variance with the given list of coefficientes (a)
