@@ -29,7 +29,7 @@ void SetArrayRandom(my_prec *A,unsigned int rows){
 /**
  * Gets the a_opt or the coefficients of each x using y
  **/
-double[][] getOptimalCoefficients (double[][] x, double[] y)
+double[][] getOptimalCoefficients (double[samples][] x, double[samples] y, int samples)
 {
 	double[][] trans=Transpose(x);
 	for(int i=0;i<trans.length;i++)
