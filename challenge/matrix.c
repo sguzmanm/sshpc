@@ -23,7 +23,9 @@ double** getOptimalCoefficients (double** x, double** y, int samples,int numVar)
 	double** trans=Transpose(x,samples,numVar);
 	int i,j;
 	double** mult=multiply0(x,trans,samples,numVar);
+		printf("A");
 	double** inv=CREATE_MATRIX(samples,numVar);
+		printf("B");
 	inverse(mult,inv,samples,numVar);
 	printf("LLEGa");
 	return multiply0(multiply0(inv,trans,samples,numVar),y,numVar,samples);

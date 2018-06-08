@@ -85,6 +85,7 @@ int main(int argc, char** argv){
 	// from arrays.c
 	free(dataMatrix[0]);
 	free(dataMatrix), dataMatrix = NULL;
+	free(y[0]);
 	free(y);
 
 	// End
