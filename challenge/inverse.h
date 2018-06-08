@@ -12,4 +12,4 @@ void adjoint(double** A,double** adj,int N);
  
 // Function to calculate and store inverse, returns false if
 // matrix is singular
-void inverse(double** A, double** inverse,int N);
+void inverse(double** A, double** inverse,int n,int m);
