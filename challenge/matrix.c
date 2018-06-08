@@ -28,13 +28,13 @@ double** getOptimalCoefficients (double** x, double** y, int samples,int numVar)
 	int i,j;
 				printf("CC %d %d\n",samples,numVar);
 
-	double** mult=multiply0(trans,x,numVar,samples);
+	double** mult=multiply0(trans,x,numVar,samples,numVar);
 		printf("A\n");
 	double** inv=CREATE_MATRIX(numVar,numVar);
 		printf("B\n");
 	inverse(mult,inv,numVar,numVar);
 	printf("LLEGa\n");
-	return multiply0(multiply0(inv,trans,numVar,samples),y,samples,1);
+	return multiply0(multiply0(inv,trans,numVar,samples,numVar),y,numVar,samples,1);
 }
 /**
  * Gets the variance with the given list of coefficientes (a)
@@ -70,15 +70,15 @@ double** Transpose(double** A,int r,int c) {
 
 }
 // Matrix Multiply Code
-double** multiply0(double** a, double** b,int row,int col)
+double** multiply0(double** a, double** b,int p,int q,int r)
 {
 	printf("MULT %d %d \n",row,col);
 	double** c=CREATE_MATRIX(row,col);
     int i,j,k;
     #pragma omp parallel for
-    for(i=0; i<row; i++) {
-        for(j=0; j<row; j++) {
-    	    for(k=0; k<col; k++) {
+    for(i=0; i<p; i++) {
+        for(j=0; j<r; j++) {
+    	    for(k=0; k<q; k++) {
 				c[i][j] = c[i][j] + a[i][k] * b[k][j];
 			}
 		}
