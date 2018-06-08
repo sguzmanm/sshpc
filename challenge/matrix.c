@@ -77,8 +77,8 @@ double** multiply0(double** a, double** b,int row,int col)
 	printf("Row %d Col %d \n",row,col);
     #pragma omp parallel for
     for(i=0; i<row; i++) {
-        for(j=0; j<col; j++) {
-    	    for(k=0; k<row; k++) {
+        for(j=0; j<row; j++) {
+    	    for(k=0; k<col; k++) {
 				c[i][j] = c[i][j] + a[i][k] * b[k][j];
 			}
 		}
