@@ -61,7 +61,7 @@ int determinant(double** A, int n,int m)
 // Function to get adjoint of A[N][N] in adj[N][N].
 void adjoint(double** A,double** adj,int n, int m)
 {
-    if (N == 1)
+    if (n == 1)
     {
         adj[0][0] = 1;
         return;
