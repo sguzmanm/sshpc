@@ -1,10 +1,5 @@
 #include "inverse.h"
 #include <cstdlib>
-
-// C++ program to find adjoint and inverse of a matrix
-#include<bits/stdc++.h>
-using namespace std;
- 
 // Function to get cofactor of A[p][q] in temp[][]. n is current
 // dimension of A[][]
 void getCofactor(double** A, double** temp, int p, int q, int n)
