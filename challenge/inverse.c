@@ -69,7 +69,7 @@ void adjoint(double** A,double** adj,int n, int m)
  
     // temp is used to store cofactors of A[][]
     int sign = 1;
-    double** temp=CREATE_ARRAY(n,m);
+    double** temp=CREATE_MATRIX(n,m);
  
     for (int i=0; i<n; i++)
     {
