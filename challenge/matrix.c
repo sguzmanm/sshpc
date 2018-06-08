@@ -34,7 +34,7 @@ double** getOptimalCoefficients (double** x, double** y, int samples,int numVar)
 		printf("B\n");
 	inverse(mult,inv,numVar,numVar);
 	printf("LLEGa\n");
-	return multiply0(multiply0(inv,trans,numVar,samples,numVar),y,numVar,samples,1);
+	return multiply0(multiply0(inv,trans,numVar,numVar,samples),y,numVar,samples,1);
 }
 /**
  * Gets the variance with the given list of coefficientes (a)
