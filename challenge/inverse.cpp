@@ -4,7 +4,6 @@
 // C++ program to find adjoint and inverse of a matrix
 #include<bits/stdc++.h>
 using namespace std;
-#define N 4
  
 // Function to get cofactor of A[p][q] in temp[][]. n is current
 // dimension of A[][]
@@ -45,7 +44,7 @@ int determinant(double** A, int n)
     if (n == 1)
         return A[0][0];
  
-    int temp[N][N]; // To store cofactors
+    double temp[N][N]; // To store cofactors
  
     int sign = 1;  // To store sign multiplier
  
