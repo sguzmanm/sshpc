@@ -32,7 +32,7 @@ double** getOptimalCoefficients (double** x, double** y, int samples,int numVar)
 	}
 	double** mult=multiply0(x,trans,samples,numVar);
 	double** inv=CREATE_MATRIX(samples,numVar);
-	inverse(mult,inv);
+	inverse(mult,inv,samples,numVar);
 	for(int i=0;i<samples;i++)
 	{
 		for(int j=0;j<numVar;j++)

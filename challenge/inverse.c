@@ -1,4 +1,5 @@
 #include "inverse.h"
+#include "arrays.h"
 // Function to get cofactor of A[p][q] in temp[][]. n is current
 // dimension of A[][]
 void getCofactor(double** A, double** temp, int p, int q, int n)
@@ -47,7 +48,7 @@ int determinant(double** A, int n,int m)
     {
         // Getting Cofactor of A[0][f]
         getCofactor(A, temp, 0, f, m);
-        D += sign * A[0][f] * determinant(temp, n - 1);
+        D += sign * A[0][f] * determinant(temp, n - 1,m);
  
         // terms are to be added with alternate sign
         sign = -sign;
@@ -68,12 +69,12 @@ void adjoint(double** A,double** adj,int N)
     // temp is used to store cofactors of A[][]
     int sign = 1, temp[N][N];
  
-    for (int i=0; i<N; i++)
+    for (int i=0; i<n; i++)
     {
-        for (int j=0; j<N; j++)
+        for (int j=0; j<m; j++)
         {
             // Get cofactor of A[i][j]
-            getCofactor(A, temp, i, j, N);
+            getCofactor(A, temp, i, j, n);
  
             // sign of adj[j][i] positive if sum of row
             // and column indexes is even.
@@ -81,7 +82,7 @@ void adjoint(double** A,double** adj,int N)
  
             // Interchanging rows and columns to get the
             // transpose of the cofactor matrix
-            adj[j][i] = (sign)*(determinant(temp, N-1));
+            adj[j][i] = (sign)*(determinant(temp, n-1,m));
         }
     }
 }
@@ -98,7 +99,7 @@ void inverse(double** A, double** inverse,int n,int m)
     }
  
     // Find adjoint
-    double adj[N][N];
+    double** adj;
     adjoint(A, adj,N);
  
     // Find Inverse using formula "inverse(A) = adj(A)/det(A)"
