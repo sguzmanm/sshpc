@@ -14,7 +14,6 @@ int main(int argc, char** argv){
 	// Timer example
 	SimpleTimer_t t1,t2;
 	// Random seed, set the seed to the random number generator
-	int seed = 7;
     srand(seed);
 
 	// Setting the problem size!
