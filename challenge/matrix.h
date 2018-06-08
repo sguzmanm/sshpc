@@ -4,8 +4,6 @@
 #include "timer.h"
 #include "randn.h"
 #include "inverse.h"
-#include "multiply.h"
-#include "Transpose.h"
 
 #define seed 7
 

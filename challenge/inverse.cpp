@@ -8,7 +8,7 @@ using namespace std;
  
 // Function to get cofactor of A[p][q] in temp[][]. n is current
 // dimension of A[][]
-void getCofactor(int A[][]], int temp[][], int p, int q, int n)
+void getCofactor(int A[][], int temp[][], int p, int q, int n)
 {
     int i = 0, j = 0;
  
