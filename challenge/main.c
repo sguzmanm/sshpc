@@ -1,83 +1,4 @@
-#include "defs.h"
-#include "arrays.h"
-#include "timer.h"
-#include "randn.h"
-#include "inverse.h"
-#include "multiply.h"
-#include "Transpose.h"
-
-
-void SetMatrixZero(my_prec **A,unsigned int rows, unsigned int cols){
-	int j,k;
-	for( j = 0; j < rows; j++ )
-		for( k = 0; k < cols; k++ )
-			A[j][k] = 0;
-}
-
-void SetMatrixRandom(my_prec **A,unsigned int rows, unsigned int cols){
-	int j,k;
-	for( j = 0; j < rows; j++ )
-		for( k = 0; k < cols; k++ )
-			A[j][k] = normal_rand();
-}
-
-void SetArrayRandom(my_prec *A,unsigned int rows){
-	int j,k;
-	for( j = 0; j < rows; j++ )
-		A[j] = normal_rand();
-}
-/**
- * Gets the a_opt or the coefficients of each x using y
- **/
-double** getOptimalCoefficients (double** x, double** y, int samples,int numVar)
-{
-	double[][] trans=Transpose(x);
-	int i,j;
-	for(i=0;i<samples;i++)
-	{
-		for(j=0;j<numVar;j++)
-		{
-			printf("%d",trans[i][j]);
-		}
-		printf("\n");
-	}
-	double[][] mult=multiply0(x,trans);
-	double[][] inv=CREATE_MATRIX(mult.length,mult.length);
-	inverse(mult,inv);
-	for(int i=0;i<inv.length;i++)
-	{
-		for(int j=0;j<inv[0].length;j++)
-		{
-			printf("%d",inv[i][j]);
-		}
-		printf("\n");
-	}
-	return multiply0(multiply0(inv,trans),y);
-}
-/**
- * Gets the variance with the given list of coefficientes (a)
- **/
-double variance(double[][] a,double[] y,double[][] x)
-{
-	double N=a.length;
-	int n=x[0].length;
-	double sum=0;
-	double temp=0;
-	for(int i=0;i<N;i++)
-	{
-		temp=0;
-		for(int j=0;j<n;j++)
-		{
-			temp+=x[i][j]*a[i][0];
-		}
-		sum+=(y[i]-temp)*(y[i]-temp);
-	}
-	return sum/(2*N);
-}
-// Perform Linear Regression
-
-
-// Collect R^2, 
+#include "matrix.h"
 
 
 // Run Matrix Calculations
@@ -152,8 +73,8 @@ int main(int argc, char** argv){
 	// Print duration
 	SimpleTimer_print( &t2 );
 
-	double*y=CREATE_ARRAY(samples);
-	SetArrayRandom(y,samples);
+	double**y=CREATE_MATRIX(samples,1);
+	SetMatrixRandom(y,samples,1);
 	getOptimalCoefficients(dataMatrix,y,samples,size_X);
 	//
 	// Check out the Times!
