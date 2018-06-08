@@ -1,4 +1,5 @@
 #include "inverse.h"
+#include "defs.h"
 #include "arrays.h"
 
 // Function to get cofactor of A[p][q] in temp[][]. n is current
