@@ -110,7 +110,7 @@ void inverse(double** A, double** inverse,int n,int m)
  
     // Find adjoint
     double** adj;
-    printf("ADJ\n %d %d",n,m);
+    printf("ADJ\n %d %d\n",n,m);
     adjoint(A, adj,n,m);
  
     // Find Inverse using formula "inverse(A) = adj(A)/det(A)"
