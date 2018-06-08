@@ -1,3 +1,3 @@
 
 
-void inverse(int A[][], float inverse[][]);
+void inverse(double** A, double** inverse);

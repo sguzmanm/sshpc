@@ -37,7 +37,7 @@ double** getOptimalCoefficients (double** x, double** y, int samples,int numVar)
 	{
 		for(j=0;j<numVar;j++)
 		{
-			printf("%d",trans[i][j]);
+			printf("%f",trans[i][j]);
 		}
 		printf("\n");
 	}
@@ -48,7 +48,7 @@ double** getOptimalCoefficients (double** x, double** y, int samples,int numVar)
 	{
 		for(int j=0;j<numVar;j++)
 		{
-			printf("%d",inv[i][j]);
+			printf("%f",inv[i][j]);
 		}
 		printf("\n");
 	}
