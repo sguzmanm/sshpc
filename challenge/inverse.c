@@ -14,6 +14,7 @@ void getCofactor(double** A, double** temp, int p, int q, int n, int m)
     {
         for (col = 0; col < m; col++)
         {
+            printf("NUM %d %d %d %d \n",row,col,i,j);
             //  Copying into temporary matrix only those element
             //  which are not in given row and column
             if (row != p && col != q)
@@ -109,7 +110,7 @@ void inverse(double** A, double** inverse,int n,int m)
     }
  
     // Find adjoint
-    double** adj;
+    double** adj=CREATE_MATRIX(n,m);
     printf("ADJ\n %d %d\n",n,m);
     adjoint(A, adj,n,m);
  
@@ -117,4 +118,6 @@ void inverse(double** A, double** inverse,int n,int m)
     for (int i=0; i<n; i++)
         for (int j=0; j<m; j++)
             inverse[i][j] = adj[i][j]/det;
+    free(adj[0]);
+    free(adj),adj=NULL;
  }
