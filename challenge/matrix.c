@@ -74,7 +74,6 @@ double** multiply0(double** a, double** b,int row,int col)
 {
 	double** c=CREATE_MATRIX(row,col);
     int i,j,k;
-	printf("Row %d Col %d \n",row,col);
     #pragma omp parallel for
     for(i=0; i<row; i++) {
         for(j=0; j<row; j++) {
