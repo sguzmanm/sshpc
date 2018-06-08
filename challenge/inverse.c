@@ -76,7 +76,7 @@ void adjoint(double** A,double** adj,int n, int m)
         for (int j=0; j<m; j++)
         {
             // Get cofactor of A[i][j]
-            getCofactor(A, temp, i, j, n.m);
+            getCofactor(A, temp, i, j, n, m);
  
             // sign of adj[j][i] positive if sum of row
             // and column indexes is even.
