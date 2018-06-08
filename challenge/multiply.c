@@ -1,9 +1,7 @@
 #include "multiply.h"
 
-double[][] multiply0(double** a[][], double** b[][])
+double[][] multiply0(double** a, double** b,int row,int col)
 {
-	int row=a.length;
-	int col=b[0].lemgth;
 	double[][] c=new double[row][col];
     int i,j,k;
     #pragma omp parallel for
