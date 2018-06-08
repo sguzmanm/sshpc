@@ -28,13 +28,13 @@ double** getOptimalCoefficients (double** x, double** y, int samples,int numVar)
 	int i,j;
 				printf("CC %d %d\n",samples,numVar);
 
-	double** mult=multiply0(x,trans,samples,numVar);
+	double** mult=multiply0(trans,x,numVar,samples);
 		printf("A\n");
-	double** inv=CREATE_MATRIX(samples,numVar);
+	double** inv=CREATE_MATRIX(numVar,numVar);
 		printf("B\n");
-	inverse(mult,inv,samples,numVar);
+	inverse(mult,inv,numVar,numVar);
 	printf("LLEGa\n");
-	return multiply0(multiply0(inv,trans,samples,numVar),y,samples,1);
+	return multiply0(multiply0(inv,trans,numVar,samples),y,samples,1);
 }
 /**
  * Gets the variance with the given list of coefficientes (a)
