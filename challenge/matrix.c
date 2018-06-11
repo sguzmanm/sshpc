@@ -22,10 +22,25 @@ void SetMatrixRandom(my_prec **A,unsigned int rows, unsigned int cols){
 double** getInverseTrans(double** trans, double** x,int samples, int numVar)
 {
 	double** mult=multiply0(trans,x,numVar,samples,numVar);
+	printf("\nMULT\n");
+	for(int i=0;i<numVar;i++)
+	{
+		for(int j=0;j<numVar;j++)
+			printf("%f ",mult[i][j]);	
+
+	}
 		printf("A\n");
 	double** inv=CREATE_MATRIX(numVar,numVar);
 		printf("B\n");
 	inverse(mult,inv,numVar,numVar);
+	printf("\INV\n");
+	for(int i=0;i<numVar;i++)
+	{
+		for(int j=0;j<numVar;j++)
+			printf("%f ",inv[i][j]);	
+
+	}
+	
 	return inv;
 }
 /**

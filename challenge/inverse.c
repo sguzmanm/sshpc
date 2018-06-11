@@ -35,13 +35,13 @@ void getCofactor(double** A, double** temp, int p, int q, int n, int m)
  
 /* Recursive function for finding determinant of matrix.
    n is current dimension of A[][]. */
-int determinant(double** A, int n,int m)
+double determinant(double** A, int n,int m)
 {
     printf("NUM %d %d",n,m);
-    int D = 0; // Initialize result
+    double D = 0; // Initialize result
  
     //  Base case : if matrix contains single element
-    if (n == 0 || m==0)
+    if (n == 1 &&  m==1)
         return A[0][0];
  
     double** temp=CREATE_MATRIX(n,m); // To store cofactors
@@ -102,14 +102,15 @@ void adjoint(double** A,double** adj,int n, int m)
 void inverse(double** A, double** inverse,int n,int m)
 {
     // Find determinant of A[][]
-    printf("DETER");
     double det = (double)determinant(A, n,m);
+    printf("DETER %f",det);
     if (det == 0)
     {
         return;
     }
  
     // Find adjoint
+    printf("ADJ2\n %d %d\n",n,m);
     double** adj=CREATE_MATRIX(n,m);
     printf("ADJ\n %d %d\n",n,m);
     adjoint(A, adj,n,m);
@@ -117,7 +118,11 @@ void inverse(double** A, double** inverse,int n,int m)
     // Find Inverse using formula "inverse(A) = adj(A)/det(A)"
     for (int i=0; i<n; i++)
         for (int j=0; j<m; j++)
+        {
             inverse[i][j] = adj[i][j]/det;
+            printf("%f ",inverse[i][j]);
+        }
     free(adj[0]);
     free(adj),adj=NULL;
  }
+

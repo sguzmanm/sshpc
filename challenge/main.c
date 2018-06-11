@@ -17,7 +17,7 @@ int main(int argc, char** argv){
     srand(seed);
 
 	// Setting the problem size!
-	samples = 2048; size_X = 3; size_data = 3;
+	samples = 2048; size_X = 3; size_data = 2;
 	printf("a\n");
 	// Creating the Matrix
 	dataMatrix = CREATE_MATRIX(size_data,size_X);
@@ -87,16 +87,24 @@ int main(int argc, char** argv){
 			printf("%f ",y[i][j]);
 
 	double** trans=Transpose(dataMatrix,size_data,size_X);
-	printf("TRANS \n");
+	printf("\n TRANS \n");
 	for(int i=0;i<size_X;i++)
 	{
 		for(int j=0;j<size_data;j++)
-			printf("%f ",trans[i][j])
+			printf("%f ",trans[i][j]);
 		printf("\n");
 
 	}
 	double** inverseTrans=getInverseTrans(trans,dataMatrix,size_data,size_X);
-	double** a=getOptimalCoefficients(trans,inverseTrans,y,size_data,size_X);
+	printf("\n INV TRANS \n");
+	for(int i=0;i<size_X;i++)
+	{
+		for(int j=0;j<size_X;j++)
+			printf("%f ",inverseTrans[i][j]);
+		printf("\n");
+
+	}
+	/*double** a=getOptimalCoefficients(trans,inverseTrans,y,size_data,size_X);
 	printf("\n OPTIMAL \n");
 	for(int i=0;i<size_X;i++)
 		printf("%f ",a[i][0]);
@@ -109,6 +117,15 @@ int main(int argc, char** argv){
 
 	double* p_val=getPValue(var, inverseTrans,a,size_X,size_data-size_X-1);
 
+	*/
+	double** A=CREATE_MATRIX(2,2);
+	A[0][0]=-1.0;
+	A[0][1]=0.0;
+	A[1][0]=3.0;
+	A[1][1]=-5.0;
+	printf("DETER %d",determinant(A,2,2));
+	free(A[0]);
+	free(A),A=NULL;
 
 	// Finally, we clean the memory stack as suggested
 	// from arrays.c
@@ -116,10 +133,11 @@ int main(int argc, char** argv){
 	free(dataMatrix), dataMatrix = NULL;
 	free(y[0]);
 	free(y), y=NULL;
-	free(a[0]);
-	free(a),a=NULL;
+//	free(a[0]);
+//	free(a),a=NULL;
 
 	// End
 	return 0;
 }
+
 
