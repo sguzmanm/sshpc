@@ -1,18 +1,18 @@
-#include "inverse.h"
 #include "defs.h"
+#include "inverse.h"
 #include "arrays.h"
 
 // Function to get cofactor of A[p][q] in temp[][]. n is current
 // dimension of A[][]
-void getCofactor(double** A, double** temp, int p, int q, int n, int m)
+void getCofactor(double** A, double** temp, int p, int q, int n)
 {
-    printf("COFACTOR %d %d %d %d\n",p,q,n,m);
+    printf("COFACTOR %d %d %d %d\n",p,q,n);
     int i = 0, j = 0;
     int row, col;
     // Looping for each element of the matrix
     for (row = 0; row < n; row++)
     {
-        for (col = 0; col < m; col++)
+        for (col = 0; col < n; col++)
         {
             printf("NUM %d %d %d %d \n",row,col,i,j);
             //  Copying into temporary matrix only those element
@@ -35,16 +35,16 @@ void getCofactor(double** A, double** temp, int p, int q, int n, int m)
  
 /* Recursive function for finding determinant of matrix.
    n is current dimension of A[][]. */
-double determinant(double** A, int n,int m)
+double determinant(double** A, int n)
 {
-    printf("NUM %d %d",n,m);
+    printf("NUM %d",n);
     double D = 0; // Initialize result
  
     //  Base case : if matrix contains single element
-    if (n == 1 &&  m==1)
+    if (n == 1)
         return A[0][0];
  
-    double** temp=CREATE_MATRIX(n,m); // To store cofactors
+    double** temp=CREATE_MATRIX(n,n); // To store cofactors
  
     int sign = 1;  // To store sign multiplier
     
@@ -52,8 +52,8 @@ double determinant(double** A, int n,int m)
     for (int f = 0; f < n; f++)
     {
         // Getting Cofactor of A[0][f]
-        getCofactor(A, temp, 0, f, n, m);
-        D += sign * A[0][f] * determinant(temp, n - 1,m-1);
+        getCofactor(A, temp, 0, f, n);
+        D += sign * A[0][f] * determinant(temp, n - 1);
  
         // terms are to be added with alternate sign
         sign = -sign;
@@ -64,9 +64,9 @@ double determinant(double** A, int n,int m)
 }
  
 // Function to get adjoint of A[N][N] in adj[N][N].
-void adjoint(double** A,double** adj,int n, int m)
+void adjoint(double** A,double** adj,int n)
 {
-    if (n == 0 || m==0)
+    if (n == 1)
     {
         adj[0][0] = 1;
         return;
@@ -74,15 +74,15 @@ void adjoint(double** A,double** adj,int n, int m)
  
     // temp is used to store cofactors of A[][]
     int sign = 1;
-    double** temp=CREATE_MATRIX(n,m);
+    double** temp=CREATE_MATRIX(n,n);
  
     for (int i=0; i<n; i++)
     {
-        for (int j=0; j<m; j++)
+        for (int j=0; j<n; j++)
         {
             printf("%d %d \n",i,j);
             // Get cofactor of A[i][j]
-            getCofactor(A, temp, i, j, n, m);
+            getCofactor(A, temp, i, j, n);
  
             // sign of adj[j][i] positive if sum of row
             // and column indexes is even.
@@ -90,7 +90,7 @@ void adjoint(double** A,double** adj,int n, int m)
  
             // Interchanging rows and columns to get the
             // transpose of the cofactor matrix
-            adj[j][i] = (sign)*(determinant(temp, n-1,m-1));
+            adj[j][i] = (sign)*(determinant(temp, n-1));
         }
     }
     free(temp[0]);
@@ -99,10 +99,10 @@ void adjoint(double** A,double** adj,int n, int m)
  
 // Function to calculate and store inverse, returns false if
 // matrix is singular
-void inverse(double** A, double** inverse,int n,int m)
+void inverse(double** A, double** inverse,int n)
 {
     // Find determinant of A[][]
-    double det = (double)determinant(A, n,m);
+    double det = (double)determinant(A, n);
     printf("DETER %f",det);
     if (det == 0)
     {
@@ -110,14 +110,14 @@ void inverse(double** A, double** inverse,int n,int m)
     }
  
     // Find adjoint
-    printf("ADJ2\n %d %d\n",n,m);
-    double** adj=CREATE_MATRIX(n,m);
-    printf("ADJ\n %d %d\n",n,m);
-    adjoint(A, adj,n,m);
+    printf("ADJ2\n %d\n",n);
+    double** adj=CREATE_MATRIX(n,n);
+    printf("ADJ\n %d \n",n);
+    adjoint(A, adj,n);
  
     // Find Inverse using formula "inverse(A) = adj(A)/det(A)"
     for (int i=0; i<n; i++)
-        for (int j=0; j<m; j++)
+        for (int j=0; j<n; j++)
         {
             inverse[i][j] = adj[i][j]/det;
             printf("%f ",inverse[i][j]);
@@ -125,4 +125,5 @@ void inverse(double** A, double** inverse,int n,int m)
     free(adj[0]);
     free(adj),adj=NULL;
  }
+
 

@@ -123,7 +123,7 @@ int main(int argc, char** argv){
 	A[0][1]=0.0;
 	A[1][0]=3.0;
 	A[1][1]=-5.0;
-	printf("DETER %d",determinant(A,2,2));
+	printf("DETER %d",determinant(A,2));
 	free(A[0]);
 	free(A),A=NULL;
 
