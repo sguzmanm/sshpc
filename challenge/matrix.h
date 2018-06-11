@@ -4,6 +4,7 @@
 #include "timer.h"
 #include "randn.h"
 #include "inverse.h"
+#include "probability.h"
 
 #define seed 7
 
@@ -11,9 +12,11 @@ void SetMatrixZero(my_prec **A,unsigned int rows, unsigned int cols);
 void SetMatrixRandom(my_prec **A,unsigned int rows, unsigned int cols);
 my_prec **treatMatrix(unsigned int samples, unsigned int size_X, unsigned int size_data);
 
-double** getOptimalCoefficients (double** x, double** y, int samples,int numVar);
+double** getInverseTrans(double** trans,double** x,int samples, int numVar);
 
-double variance(double** a,double* y,double** x,int N,int n);
+double** getOptimalCoefficients (double** trans, double** inv, double** y, int samples,int numVar);
+
+double variance(double** a,double** y,double** x,int N,int n);
 
 // Matrix Transpose Code
 double** Transpose(double** A,int r,int c);

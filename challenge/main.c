@@ -1,5 +1,5 @@
 #include "matrix.h"
-
+#include "probability.h"
 
 // Run Matrix Calculations
 int main(int argc, char** argv){
@@ -86,7 +86,17 @@ int main(int argc, char** argv){
 		for (int j=0;j<1;j++)
 			printf("%f ",y[i][j]);
 
-	double** a=getOptimalCoefficients(dataMatrix,y,size_data,size_X);
+	double** trans=Transpose(dataMatrix,size_data,size_X);
+	printf("TRANS \n");
+	for(int i=0;i<size_X;i++)
+	{
+		for(int j=0;j<size_data;j++)
+			printf("%f ",trans[i][j])
+		printf("\n");
+
+	}
+	double** inverseTrans=getInverseTrans(trans,dataMatrix,size_data,size_X);
+	double** a=getOptimalCoefficients(trans,inverseTrans,y,size_data,size_X);
 	printf("\n OPTIMAL \n");
 	for(int i=0;i<size_X;i++)
 		printf("%f ",a[i][0]);
@@ -94,13 +104,22 @@ int main(int argc, char** argv){
 	// Check out the Times!
 	//
 
+	double var=variance(a,y,dataMatrix,size_X,size_data);
+	printf("VAR: %f \n",var);
+
+	double* p_val=getPValue(var, inverseTrans,a,size_X,size_data-size_X-1);
+
+
 	// Finally, we clean the memory stack as suggested
 	// from arrays.c
 	free(dataMatrix[0]);
 	free(dataMatrix), dataMatrix = NULL;
 	free(y[0]);
 	free(y), y=NULL;
+	free(a[0]);
+	free(a),a=NULL;
 
 	// End
 	return 0;
 }
+

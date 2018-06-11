@@ -16,30 +16,30 @@ void SetMatrixRandom(my_prec **A,unsigned int rows, unsigned int cols){
 			A[j][k] = normal_rand();
 }
 /**
- * Gets the a_opt or the coefficients of each x using y
- **/
-double** getOptimalCoefficients (double** x, double** y, int samples,int numVar)
+ * Gets the matrix of (X*Xt)^-1
+**/
+
+double** getInverseTrans(double** trans, double** x,int samples, int numVar)
 {
-			printf("AA %d %d\n",samples,numVar);
-
-	double** trans=Transpose(x,samples,numVar);
-				printf("BB %d %d\n",samples,numVar);
-
-	int i,j;
-				printf("CC %d %d\n",samples,numVar);
-
 	double** mult=multiply0(trans,x,numVar,samples,numVar);
 		printf("A\n");
 	double** inv=CREATE_MATRIX(numVar,numVar);
 		printf("B\n");
 	inverse(mult,inv,numVar,numVar);
-	printf("LLEGa\n");
-	return multiply0(multiply0(inv,trans,numVar,numVar,samples),y,numVar,samples,1);
+	return inv;
+}
+/**
+ * Gets the a_opt or the coefficients of each x using y. It already assumes that you are passing the inverse matrix of 
+ * the multiplication of x with its transposition
+ **/
+double** getOptimalCoefficients (double** trans, double** inv, double** y, int samples,int numVar)
+{
+		return multiply0(multiply0(inv,trans,numVar,numVar,samples),y,numVar,samples,1);
 }
 /**
  * Gets the variance with the given list of coefficientes (a)
  **/
-double variance(double** a,double* y,double** x,int N,int n)
+double variance(double** a,double** y,double** x,int N,int n)
 {
 	double sum=0;
 	double temp=0;
@@ -50,7 +50,7 @@ double variance(double** a,double* y,double** x,int N,int n)
 		{
 			temp+=x[i][j]*a[i][0];
 		}
-		sum+=(y[i]-temp)*(y[i]-temp);
+		sum+=(y[i][0]-temp) * (y[i][0]-temp);
 	}
 	temp=(double)N;
 	return sum/(2*temp);
