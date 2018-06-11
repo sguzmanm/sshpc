@@ -32,7 +32,7 @@ double** getInverseTrans(double** trans, double** x,int samples, int numVar)
 		printf("A\n");
 	double** inv=CREATE_MATRIX(numVar,numVar);
 		printf("B\n");
-	inverse(mult,inv,numVar,numVar);
+	inverse(mult,inv,numVar);
 	printf("\INV\n");
 	for(int i=0;i<numVar;i++)
 	{
